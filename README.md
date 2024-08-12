@@ -13,7 +13,7 @@ The project utilizes my [sageil/crewai-docker-image](https://github.com/sageil/c
 
 > [!NOTE]  
 > In its current state, this project depends on locally running LLMS using Ollama.<br/>
-> install (Ollama)[https://ollama.com/] and run it on your local machine.<br/>
+> install (Ollama)[https://ollama.com/].<br/>
 > Once Ollama installed, install mistral by running `ollama run mistral` from your terminal.<br/>
 > See changing models below to use other models<br/>
 
