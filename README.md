@@ -23,12 +23,13 @@ To run the application your machine, follow these steps:
 5. Navigate to the ***parent*** directory of where you cloned the repository. project directory in your terminal or command prompt.
 
 > [!IMPORTANT]  
-> If you run the container in any directory besides the parent directory of where you cloned the repository, a new crewAi project with the name `veterinary_assistant` will be created.
+> If you run the container in any directory other than parent directory of where you cloned the repository, a new crewAi project with the name `veterinary_assistant` will be created.
 
 6. Run the following command to start the container
 ```bash
 docker container run -e P="veterinary_assistant" --network host -it --rm --mount type=bind,source="$(pwd)",target=/app sageil/crewai:latest bash
 ```
+7. Edit the project files using your favourite IDE or editor.
 ### Option 2: Running the application in Docker
 
 1. Start a container using 
@@ -42,6 +43,7 @@ docker container run --name veterinary_assistance --network host -it sageil/crew
 6. Run `poetry shell`
 7. Run `source .venv/bin/activate` to activate the project python environment
 8. Run the application using `poetry run veterinary_assistant`
+9. Use the included neovim installation to edit the project by typing `nvim .` in the project directory
 
 ## Changing model to another one
 
