@@ -9,12 +9,15 @@ The project utilizes my [sageil/crewai-docker-image](https://github.com/sageil/c
 
 ## Running the Application
 
-### Using a docker mount locally 
+### Option 1: Using a docker mount locally 
 
 > [!NOTE]  
 > In its current state, this project depends on locally running LLMS using Ollama.
 > install (Ollama)[https://ollama.com/] and run it on your local machine.
+
 > Once Ollama installed, install mistral by running `ollama run mistral` from your terminal.
+
+> See changing models below to use other models
 
 To run the application your machine, follow these steps:
 1. Clone this repository to your local machine.
@@ -28,7 +31,7 @@ To run the application your machine, follow these steps:
 ```bash
 docker container run -e P="veterinary_assistant" --network host -it --rm --mount type=bind,source="$(pwd)",target=/app sageil/crewai:latest bash
 ```
-### Cloning & running the application in Docker
+### Option 2: Running the application in Docker
 
 1. Start a container using 
 ```bash
