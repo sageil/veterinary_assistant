@@ -57,3 +57,6 @@ llm = ChatOpenAI(
     model="mistral:latest", base_url="http://host.docker.internal:11434/v1", temperature= 0.7, max_tokens=2048
 )
 ```
+### TODO
+- [ ] Recreate report.md using the prompt
+- [ ] Create GUI for user interaction using [streamlit](https://streamlit.io/)

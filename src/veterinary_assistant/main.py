@@ -8,7 +8,7 @@ def run():
     Run the crew.
     """
     inputs = {
-        'input': input("Enter the symptons: "),
+        'input': input("Describe your pet species, age, medical history if any, and current condition\n"),
     }
     veterinaryAssistantCrew().crew().kickoff(inputs=inputs)
 
@@ -18,7 +18,7 @@ def train():
     Train the crew for a given number of iterations.
     """
     inputs = {
-        "input": input("Describe your pet animal condition: ")
+        "input": input("Describe your pet Animal Species, age, medical history if any and current condition: ")
     }
     try:
         veterinaryAssistantCrew().crew().train(n_iterations=int(sys.argv[1]), inputs=inputs)
