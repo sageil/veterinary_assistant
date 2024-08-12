@@ -5,7 +5,7 @@ Welcome to the Veterinary Assistant Crew project, powered by [crewAI](https://cr
 ## Project Overview
 The Veterinary Assistant Crew project aims to develop an AI-powered veterinary assistant capable of providing insights, diagnoses, treatment plans, and prescriptions based on symptoms provided by pet owners. The system will utilize advanced machine learning algorithms and natural language processing to assist veterinarians in making informed decisions.
 
-The project utilizes my [sageil/crewai-docker-image](https://github.com/sageil/crewai-docker-image) crewAI development Docker image. You can build the image locally or download it from [Docker Hub](https://hub.docker.com/r/sageil/crewai/tags)
+The project utilizes my [sageil/crewai-docker-image](https://github.com/sageil/crewai-docker-image) crewAI development Docker image. You can build the image locally or pull it from [Docker Hub](https://hub.docker.com/r/sageil/crewai/tags) to get started quickly.
 
 ## Running the Application
 
