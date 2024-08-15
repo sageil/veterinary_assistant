@@ -58,7 +58,7 @@ llm = ChatOpenAI(
 )
 ```
 ### Example 
-Asking for a diagnosis for `3 year old Siberian Husky with Loss of Appetite` resulted in 
+Asking for a diagnosis for `4 years old cat vomiting` resulted in 
 [Report](https://github.com/sageil/veterinary_assistant/blob/main/reports/148ab302-2c95-4988-b053-f667be975602.md).
 ### TODO
 - [ ] Recreate report.md using the prompt
