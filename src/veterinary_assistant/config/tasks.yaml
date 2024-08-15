@@ -16,7 +16,7 @@ research_task:
     - The symptom
     - The diagnosis
     - Summary of available treatment options
-    - Recommend immediate action if necessary
+    - Recommend immediate actions if necessary
     Here is an example output format to include in your document:
 
     <EXAMPLE>
@@ -33,6 +33,14 @@ reporting_task:
   description: >
     Review the context you got and expand each topic into a full section for a report.
     Make sure the report is detailed and contains any and all relevant information.
+
+      These keywords must never be translated and transformed:
+      - Action:
+      - Thought:
+      - Action Input:
+      because they are part of the thinking process instead of the output.
+      Action Input should be formatted as coworker|task|context.
+    
   expected_output: >
     A fully fledge reports with the mains topics, each with a full section of information.
     Formatted as markdown without '```'

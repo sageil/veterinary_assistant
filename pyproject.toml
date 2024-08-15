@@ -7,12 +7,16 @@ authors = ["Sammy Ageil"]
 [tool.poetry.dependencies]
 python = ">=3.10,<=3.13"
 crewai = { extras = ["tools"], version = "^0.41.1" }
+streamlit = "^1.37.1"
 
 [tool.poetry.scripts]
 veterinary_assistant = "veterinary_assistant.main:run"
 train = "veterinary_assistant.main:train"
 replay = "veterinary_assistant.main:replay"
+web = "streamlit run ./web/app.py"
+
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
