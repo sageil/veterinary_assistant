@@ -48,7 +48,7 @@ docker container run --name veterinary_assistance --network host -it sageil/crew
 9. Access the crew using http://localhost:8501/
 10. Use the included neovim installation to edit the project by typing `nvim .` in the project directory
 
-## Changing model to another one
+## Changing currently used models
 
 > [!CAUTION]
 > Using local large models will have a performance impact.
@@ -60,7 +60,11 @@ diagnosticianllm = Ollama(model="openhermes:v2.5", base_url="http://host.docker.
 reportinganalystllm = Ollama(model="gemma:latest", base_url="http://host.docker.internal:11434", temperature=0.30)
 ```
 ## Using publicly available LLMs.
-If you want to use publicly available models, you need to change the above llms to match the desired LLM and import model's langchain_openai implementation.
+If you want to use publicly available models, please use the following steps;
+
+1. Change the model property to match the desired LLM.
+2. import model's langchain_openai implementation.
+
 To use ChatGPT, import it first `from langchain_openai import ChatOpenAI` then use it to configure the LLMs using the following:
 ```bash
 # GPT based LLMS
@@ -69,11 +73,13 @@ diagnosticianllm = ChatOpenAI(
 reportinganalystllm== ChatOpenAI(
     model="gpt-4-turbo",  temperature= 0.30)
 ```
-
+3. Include your `OPENAI_API_KEY` in the .env file in the root of the project.  
 ### Example 
 The `reports` directory contains a few answers provided by my locally installed agents
 [Reports](https://github.com/sageil/veterinary_assistant/tree/main/reports).
 
+### Having issues?
+[Report any issues](https://github.com/sageil/veterinary_assistant/issues)
 ### Screen Capture
 
 ![Browser](assets/Veterinary-Assistant-Diagnostic.png)
