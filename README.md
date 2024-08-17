@@ -14,22 +14,23 @@ The project utilizes my [sageil/crewai-docker-image](https://github.com/sageil/c
 > [!NOTE]  
 > In its current state, this project depends on locally running LLMS using Ollama.<br/>
 > install (Ollama)[https://ollama.com/].<br/>
-> Once Ollama installed, install mistral by running `ollama run mistral` from your terminal.<br/>
+> Once Ollama installed, install ollama run openhermes:v2.5 and  by running `ollama run openhermes:v2.5` and `ollama run gemma:latest` from your terminal.<br/>
 > See changing models below to use other models<br/>
 
 To run the application your machine, follow these steps:
-1. Clone this repository to your local machine.
-2. Install Docker on your machine if you haven't already.
-5. Navigate to the ***parent*** directory of where you cloned the repository. project directory in your terminal or command prompt.
-
-> [!IMPORTANT]  
-> If you run the container in any directory other than parent directory of where you cloned the repository, a new crewAi project with the name `veterinary_assistant` will be created.
-
-6. Run the following command to start the container
+1. Install Docker on your machine if you haven't already.
+2. Install Ollama
+2. Clone this repository to your local machine.
+3. Run the following command to start the container
 ```bash
 docker container run -e P="veterinary_assistant" --network host -it --rm --mount type=bind,source="$(pwd)",target=/app sageil/crewai:latest bash
 ```
+4. Run `poetry install`
+5. Run `poetry shell`
+6. Run `source .venv/bin/activate` to activate the project python environment
 7. Edit the project files using your favourite IDE or editor.
+8. To use the terminal, run the application using `poetry run veterinary_assistant` or if you prefer to use the web interface, run `streamlit run web/app.py`
+
 ### Option 2: Running the application in Docker
 
 1. Start a container using 
@@ -42,24 +43,34 @@ docker container run --name veterinary_assistance --network host -it sageil/crew
 5. Run `poetry install`
 6. Run `poetry shell`
 7. Run `source .venv/bin/activate` to activate the project python environment
-8. Run the application using `poetry run veterinary_assistant`
+8. To use the terminal, run the application using `poetry run veterinary_assistant` or if you prefer to use the web interface, run `streamlit run web/app.py`
 9. Use the included neovim installation to edit the project by typing `nvim .` in the project directory
 
 ## Changing model to another one
 
 > [!CAUTION]
-> Using large models will have a performance impact.
+> Using local large models will have a performance impact.
 > If you observe performance issues, change to a smaller model like `phi3:3.8b`
 
-To change the model used by the agents, you need to update the `model` parameter in the `crew.py` file located at `veterinary_assistant/src/veterinary_assistant`. You can also change the temperature and max_token:
+To change the model used by the agents, you need to update the `model` parameter in the `crew.py` file located at `veterinary_assistant/src/veterinary_assistant`.
 ```python
-llm = ChatOpenAI(
-    model="mistral:latest", base_url="http://host.docker.internal:11434/v1", temperature= 0.7, max_tokens=2048
-)
+diagnosticianllm = Ollama(model="openhermes:v2.5", base_url="http://host.docker.internal:11434", temperature=0.1)
+reportinganalystllm = Ollama(model="gemma:latest", base_url="http://host.docker.internal:11434", temperature=0.30)
 ```
+## Using publicly available LLMs.
+If you want to use publicly available models, you need to change the above llms to match the desired LLM and import model's langchain_openai implementation.
+To use ChatGPT, import it first `from langchain_openai import ChatOpenAI` then use it to configure the LLMs using the following:
+```bash
+# GPT based LLMS
+diagnosticianllm = ChatOpenAI(
+    model="gpt-40",  temperature= 0.1)
+reportinganalystllm== ChatOpenAI(
+    model="gpt-4-turbo",  temperature= 0.30)
+```
+
 ### Example 
-Asking for a diagnosis for `4 years old cat vomiting` resulted in 
-[Report](https://github.com/sageil/veterinary_assistant/blob/main/reports/148ab302-2c95-4988-b053-f667be975602.md).
+The `reports` directory contains a few answers provided by my locally installed agents
+[Reports](https://github.com/sageil/veterinary_assistant/tree/main/reports).
 ### TODO
-- [ ] Recreate report.md using the prompt
-- [ ] Create GUI for user interaction using [streamlit](https://streamlit.io/)
+- [X] Recreate report.md using the prompt
+- [X] Create GUI for user interaction using [streamlit](https://streamlit.io/)
