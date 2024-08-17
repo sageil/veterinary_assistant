@@ -30,6 +30,7 @@ docker container run -e P="veterinary_assistant" --network host -it --rm --mount
 6. Run `source .venv/bin/activate` to activate the project python environment
 7. Edit the project files using your favourite IDE or editor.
 8. To use the terminal, run the application using `poetry run veterinary_assistant` or if you prefer to use the web interface, run `streamlit run web/app.py`
+9. Access the crew using http://localhost:8501/
 
 ### Option 2: Running the application in Docker
 
@@ -44,7 +45,8 @@ docker container run --name veterinary_assistance --network host -it sageil/crew
 6. Run `poetry shell`
 7. Run `source .venv/bin/activate` to activate the project python environment
 8. To use the terminal, run the application using `poetry run veterinary_assistant` or if you prefer to use the web interface, run `streamlit run web/app.py`
-9. Use the included neovim installation to edit the project by typing `nvim .` in the project directory
+9. Access the crew using http://localhost:8501/
+10. Use the included neovim installation to edit the project by typing `nvim .` in the project directory
 
 ## Changing model to another one
 
@@ -71,6 +73,11 @@ reportinganalystllm== ChatOpenAI(
 ### Example 
 The `reports` directory contains a few answers provided by my locally installed agents
 [Reports](https://github.com/sageil/veterinary_assistant/tree/main/reports).
+
+### Screen Capture
+
+![Browser](assets/Veterinary-Assistant-Diagnostic.png)
+
 ### TODO
 - [X] Recreate report.md using the prompt
 - [X] Create GUI for user interaction using [streamlit](https://streamlit.io/)
