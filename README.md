@@ -65,7 +65,7 @@ If you want to use publicly available models, please use the following steps;
 1. Change the model property to match the desired LLM.
 2. import model's langchain_openai implementation.
 
-To use ChatGPT, import it first `from langchain_openai import ChatOpenAI` then use it to configure the LLMs using the following:
+To use ChatGPT, import it using `from langchain_openai import ChatOpenAI` then use it to configure the LLMs using the following:
 ```bash
 # GPT based LLMS
 diagnosticianllm = ChatOpenAI(
