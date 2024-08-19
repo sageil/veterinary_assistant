@@ -13,10 +13,8 @@ streamlit = "^1.37.1"
 veterinary_assistant = "veterinary_assistant.main:run"
 train = "veterinary_assistant.main:train"
 replay = "veterinary_assistant.main:replay"
-web = "streamlit run ./web/app.py"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
