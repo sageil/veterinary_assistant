@@ -78,7 +78,7 @@ The `reports` directory contains a few answers provided by my locally installed 
 
 ## Docker Desktop Users
 
-Enabling host network on Docker Desktop is required to run this project locally. 
+Enabling host network on Docker Desktop is required to run this project using local LLM. 
 while the feature is ready for Linux, it is in beta on Windows and Mac. [Read more](https://docs.docker.com/engine/network/tutorials/host/).
 
 ### Having issues?
