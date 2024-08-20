@@ -91,4 +91,4 @@ while the feature is ready for Linux, it is in beta on Windows and Mac. [Read mo
 - [X] Recreate report.md using the prompt
 - [X] Create GUI for user interaction using [streamlit](https://streamlit.io/)
 - [ ] Introduce human interaction
-- [ ] Add RAG pipeline
+- [ ] Add RAG pipeline to include local datasets to support local LLM
