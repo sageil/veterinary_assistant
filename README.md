@@ -9,9 +9,9 @@ The project utilizes my [sageil/crewai-docker-image](https://github.com/sageil/c
 
 ## Running the Application
 
-### Option 1: Using a docker mount locally 
+### Option 1: Using a docker mount locally
 
-> [!NOTE]  
+> [!NOTE]
 > In its current state, this project depends on locally running LLMS using Ollama.<br/>
 > install (Ollama)[https://ollama.com/].<br/>
 > Once Ollama installed, install ollama run openhermes:v2.5 and  by running `ollama run openhermes:v2.5` and `ollama run gemma:latest` from your terminal.<br/>
@@ -33,13 +33,13 @@ docker container run -e P="veterinary_assistant" --network host -it --rm --mount
 
 ### Option 2: Running the application in Docker
 
-1. Start a container using 
+1. Start a container using
 ```bash
-docker container run --name veterinary_assistance --network host -it sageil/crewai:latest bash
+docker container run --name veterinary_assistance --network host -it sageil/crewai:0.41.1 bash
 ```
-2. Once the container starts, navivate to the `/app/` directory `cd /app/` 
+2. Once the container starts, navivate to the `/app/` directory `cd /app/`
 3. Close the repository `git clone https://github.com/sageil/veterinary_assistant.git`
-4. Change directory to `veterinary_assistant` directory 
+4. Change directory to `veterinary_assistant` directory
 5. Run `poetry install`
 6. Run `poetry shell`
 7. To use the terminal, run the application using `poetry run veterinary_assistant` or if you prefer to use the web interface, run `streamlit run web/app.py`
@@ -71,14 +71,14 @@ diagnosticianllm = ChatOpenAI(
 reportinganalystllm== ChatOpenAI(
     model="gpt-4-turbo",  temperature= 0.30)
 ```
-3. Include your `OPENAI_API_KEY` in the .env file in the root of the project.  
-### Example 
+3. Include your `OPENAI_API_KEY` in the .env file in the root of the project.
+### Example
 The `reports` directory contains a few answers provided by my locally installed agents
 [Reports](https://github.com/sageil/veterinary_assistant/tree/main/reports).
 
 ## Docker Desktop Users
 
-Enabling host network on Docker Desktop is required to run this project using local LLM. 
+Enabling host network on Docker Desktop is required to run this project using local LLM.
 while the feature is ready for Linux, it is in beta on Windows and Mac. [Read more](https://docs.docker.com/engine/network/tutorials/host/).
 
 ### Having issues?

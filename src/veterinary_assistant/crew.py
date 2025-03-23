@@ -7,13 +7,13 @@ from langchain_core.agents import AgentFinish
 import json
 from langchain_community.llms import Ollama
 import uuid
-diagnosticianllm = Ollama(model="openhermes:v2.5", base_url="http://host.docker.internal:11434", temperature=0.1)
-reportinganalystllm = Ollama(model="gemma:latest", base_url="http://host.docker.internal:11434", temperature=0.30)
+
 
 @CrewBase
 class veterinaryAssistantCrew:
     """veterinaryAssistant crew"""
-
+    diagnosticianllm = Ollama(model="openhermes:v2.5", base_url="http://host.docker.internal:11434", temperature=0.1)
+    reportinganalystllm = Ollama(model="gemma:latest", base_url="http://host.docker.internal:11434", temperature=0.30)
     agents_config = "config/agents.yaml"
     tasks_config = "config/tasks.yaml"
     ## step call_back from https://gist.github.com/alejandro-ao/6b5cd6166f6d9219c26222809bcd8392
@@ -23,6 +23,7 @@ class veterinaryAssistantCrew:
             agent_name,
             *args,
         ):
+
             with st.chat_message("AI"):
                 # Try to parse the output if it is a JSON string
                 if isinstance(agent_output, str):
@@ -60,21 +61,21 @@ class veterinaryAssistantCrew:
         return Agent(
             config=self.agents_config["diagnostician"],
             verbose=True,
-            llm=diagnosticianllm,
+            llm=self.diagnosticianllm,
             allow_delegation=False,
             max_iter=5,
-            step_callback=lambda step: self.step_callback(step, "Diagnostician"),   
+            step_callback=lambda step: self.step_callback(step, "Diagnostician"),
             )
 
     @agent
     def reporting_analyst(self) -> Agent:
         return Agent(
-            config=self.agents_config["reporting_analyst"], 
+            config=self.agents_config["reporting_analyst"],
             verbose=True,
-            llm=reportinganalystllm, 
+            llm=self.reportinganalystllm,
             allow_delegation=False,
             max_iter=10,
-            step_callback=lambda step: self.step_callback(step, "Reporting Analyst"),   
+            step_callback=lambda step: self.step_callback(step, "Reporting Analyst"),
         )
 
     @task
@@ -99,4 +100,3 @@ class veterinaryAssistantCrew:
             verbose=2,
             # process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
         )
-
