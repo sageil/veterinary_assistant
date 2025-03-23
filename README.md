@@ -7,6 +7,11 @@ The Veterinary Assistant Crew project aims to develop an AI-powered veterinary a
 
 The project utilizes my [sageil/crewai-docker-image](https://github.com/sageil/crewai-docker-image) crewAI development Docker image. You can build the image locally or pull it from [Docker Hub](https://hub.docker.com/r/sageil/crewai/tags) to get started quickly.
 
+> [!NOTE]
+> Due to recent changes to CrewAI API, I have included the docker file and the supporting files to build the image.<br/>
+> You can build the image locally and use it as you wish by using `docker image build -t mycrewai .`.<br/>
+> You can replace `crewai:latest` with your locally built image in the below instructions.
+
 ## Running the Application
 
 ### Option 1: Using a docker mount locally
@@ -20,16 +25,16 @@ The project utilizes my [sageil/crewai-docker-image](https://github.com/sageil/c
 To run the application your machine, follow these steps:
 1. Install Docker on your machine if you haven't already.
 2. Install Ollama
-2. Clone this repository to your local machine.
-3. Run the following command to start the container
+3. Clone this repository to your local machine.
+4. Run the following command to start the container
 ```bash
 docker container run -e P="veterinary_assistant" --network host -it --rm --mount type=bind,source="$(pwd)",target=/app sageil/crewai:latest bash
 ```
-4. Run `poetry install`
-5. Run `poetry shell`
-6. Edit the project files using your favourite IDE or editor.
-7. To use the terminal, run the application using `poetry run veterinary_assistant` or if you prefer to use the web interface, run `streamlit run web/app.py`
-8. Access the crew using http://localhost:8501/
+5. Run `poetry install`
+6. Run `poetry shell`
+7. Edit the project files using your favourite IDE or editor.
+8. To use the terminal, run the application using `poetry run veterinary_assistant` or if you prefer to use the web interface, run `streamlit run web/app.py`
+9. Access the crew using http://localhost:8501/
 
 ### Option 2: Running the application in Docker
 
